@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel | Face Attendance</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+</head>
+<body>
+  <!-- Admin Login -->
+  <div class="container" id="loginScreen">
+    <div class="glass-card">
+      <h2>🔒 Admin Login</h2>
+      <input type="password" id="adminPass" placeholder="Enter Password">
+      <button onclick="verifyPassword()">Login</button>
+      <p id="loginStatus" style="color:tomato; margin-top:10px;"></p>
+    </div>
+  </div>
+
+  <!-- Admin Panel (Hidden initially) -->
+  <div class="container" id="adminPanel" style="display:none;">
+    <div class="glass-card">
+      <h2>👤 Register Employee</h2>
+      <input type="text" id="empName" placeholder="Employee Name">
+      <button onclick="registerEmployee()">Register</button>
+
+      <div class="dashboard-summary">
+        <h3>📊 Live Summary</h3>
+        <div class="stats">
+          <div><strong>✅ Present:</strong> <span id="presentCount">0</span></div>
+          <div><strong>⏱️ Working:</strong> <span id="workingCount">0</span></div>
+          <div><strong>🟡 On Break:</strong> <span id="breakCount">0</span></div>
+          <div><strong>🔴 Late:</strong> <span id="lateCount">0</span></div>
+        </div>
+      </div>
+
+      <h3>📋 Employee List</h3>
+      <ul id="employeeList" style="text-align:left;"></ul>
+
+      <div class="approval-section">
+        <h3>⏱ Overtime Approvals</h3>
+        <ul id="approvalList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

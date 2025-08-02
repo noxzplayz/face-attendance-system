@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Check-In | Face Attendance</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+</head>
+<body>
+  <!-- Admin Button -->
+  <a href="/" class="admin-button">Admin</a>
+  <div class="container">
+    <div class="glass-card">
+      <h2>📸 Face Attendance</h2>
+      <video id="video" autoplay muted playsinline></video>
+      <input type="text" id="empId" placeholder="Enter Your Employee ID">
+      <button onclick="sendScan()">Scan & Send</button>
+      <p id="status" style="margin-top:10px; color:#0f0;"></p>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+</body>
+</html>

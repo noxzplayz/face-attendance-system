@@ -39,6 +39,12 @@ app.use(express.json());
 // Register employee
 app.post('/register', (req, res) => {
   const newEmp = req.body;
+  
+  // Validate required fields
+  if (!newEmp.name || !newEmp.position || !newEmp.startTime || !newEmp.endTime || !Array.isArray(newEmp.workingDays)) {
+    return res.json({ success: false, error: "Missing fields" });
+  }
+  
   const data = readData();
   if (!data.employees.find(e => e.id === newEmp.id)) {
     data.employees.push(newEmp);

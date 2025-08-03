@@ -34,20 +34,31 @@ function verifyPassword() {
 // === Register New Employee ===
 function registerEmployee() {
   const name = document.getElementById("empName").value.trim();
-  if (!name) return alert("Enter employee name");
+  const position = document.getElementById("empPosition").value.trim();
+  const workHours = parseInt(document.getElementById("workHours").value);
+  const startTime = document.getElementById("startTime").value;
+  const endTime = document.getElementById("endTime").value;
+  const workingDays = Array.from(document.querySelectorAll(".workDay:checked")).map(cb => cb.value);
 
-  const empID = "EMP" + String(Date.now()).slice(-5); // Unique ID
+  if (!name || !position || !workHours || !startTime || !endTime || workingDays.length === 0) {
+    return alert("Please fill in all fields and select working days.");
+  }
+
+  const empID = "EMP" + String(Date.now()).slice(-5);
+
   const newEmp = {
     id: empID,
     name,
+    position,
+    workHours,
+    startTime,
+    endTime,
+    workingDays,
     checkins: [],
-    workHours: 8,
     breakLimit: 60,
     leaves: [],
-    weeklyOff: []
   };
 
-  // Send to server
   fetch("/register", {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
@@ -55,10 +66,10 @@ function registerEmployee() {
   }).then(res => res.json())
     .then(data => {
       if (data.success) {
-        employeeData.push(newEmp);
-        renderEmployeeList();
-        document.getElementById("empName").value = "";
-        alert("✅ Registered: " + name + " (ID: " + empID + ")");
+        alert(`✅ Registered: ${name} (${empID})`);
+        loadEmployeeList();
+      } else {
+        alert("❌ Failed to register");
       }
     });
 }

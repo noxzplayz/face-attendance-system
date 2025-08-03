@@ -8,6 +8,26 @@
       "breakLimit": 60,
       "leaves": [],
       "weeklyOff": []
+    },
+    {
+      "id": "EMP70301",
+      "name": "yochan",
+      "position": "cashier",
+      "workHours": 8,
+      "startTime": "09:09",
+      "endTime": "22:00",
+      "workingDays": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "checkins": [],
+      "breakLimit": 60,
+      "leaves": []
     }
   ],
   "logs": [
